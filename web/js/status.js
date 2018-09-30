@@ -1,53 +1,55 @@
-window.onload = getStatus;
+document.addEventListener("DOMContentLoaded", function () {
 
-let xHRObject = new XMLHttpRequest();
+    let xHRObject = new XMLHttpRequest();
 
-function getStatus() {
-    xHRObject.open("GET", "ManageStatusServlet", true);
-    xHRObject.onreadystatechange = getData;
-    xHRObject.send(null);
-}
+    function update() {
+        xHRObject.open("GET", "ManageStatusServlet", true);
+        xHRObject.onreadystatechange = getStatus;
+        xHRObject.send(null);
+    }
 
-function getData() {
-    if (xHRObject.status === 200) {
-        if (xHRObject.readyState === 4) {
-            let serverResponse = JSON.parse(xHRObject.responseText);
-            let status = serverResponse.status;
-            let statusDiv = document.getElementById("user-status");
-            createStatusMessage(statusDiv, status);
-            createStatusDot(statusDiv, status);
-            setTimeout(getStatus, 2000);
+    function getStatus() {
+        if (xHRObject.status === 200) {
+            if (xHRObject.readyState === 4) {
+                let serverResponse = JSON.parse(xHRObject.responseText);
+                console.log(serverResponse);
+                let status = serverResponse.status;
+                let statusDiv = document.getElementById("user-status");
+                createStatusMessage(statusDiv, status);
+                createStatusDot(statusDiv, status);
+                setTimeout(getStatus, 2000);
+            }
         }
     }
-}
 
-function createStatusMessage(statusDiv, status) {
-    let statusTextDiv = statusDiv.childNodes[0];
+    function createStatusMessage(statusDiv, status) {
+        let statusTextDiv = statusDiv.childNodes[0];
 
-    if (statusTextDiv == null) {
-        statusTextDiv = document.createElement('div');
-        statusTextDiv.id = "statusText";
-        let statusText = document.createTextNode(status);
-        statusTextDiv.appendChild(statusText);
-        statusDiv.appendChild(statusTextDiv);
-    } else {
-        let statusText = document.createTextNode(status);
-        statusTextDiv.removeChild(statusTextDiv.childNodes[0]);
-        statusTextDiv.appendChild(statusText);
+        if (statusTextDiv == null) {
+            createSimpleElement("div", status, statusDiv, "status-text");
+        } else {
+            let statusText = document.createTextNode(status);
+            statusTextDiv.removeChild(statusTextDiv.childNodes[0]);
+            statusTextDiv.appendChild(statusText);
+        }
     }
-}
 
-function createStatusDot(statusDiv, status) {
-    let statusDotDiv = statusDiv.childNodes[1];
+    function createStatusDot(statusDiv, status) {
+        let statusDotDiv = statusDiv.childNodes[1];
 
-    if (statusDotDiv == null) {
-        statusDotDiv = document.createElement('div');
-        statusDotDiv.id = getDotId(status);
+        if (statusDotDiv == null) {
+            statusDotDiv = document.createElement("div");
+        } else {
+            statusDiv.removeChild(statusDotDiv);
+        }
+
+        statusDotDiv.className = getDotId(status);
         statusDiv.appendChild(statusDotDiv);
-    } else {
-        statusDotDiv.id = getDotId(status);
     }
-}
+
+    update();
+
+});
 
 function getDotId(status) {
     switch (status) {
@@ -60,5 +62,4 @@ function getDotId(status) {
         default:
             return "status-modified";
     }
-
 }

@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class LogIn extends RequestHandler {
 
@@ -47,6 +48,12 @@ public class LogIn extends RequestHandler {
     private void createSession(Person person, HttpServletRequest request, HttpServletResponse response) {
         HttpSession session = request.getSession();
         session.setAttribute("user", person);
+
+        PersonService personService = super.getPersonService();
+        session.setAttribute("friends", person.getFriends()
+                .stream()
+                .map(personService::getPerson)
+                .collect(Collectors.toCollection(ArrayList::new)));
     }
 
 }

@@ -21,6 +21,8 @@
 <main>
     <c:if test="${not empty user}">
         <div id="user-status"></div>
+        <div id="friends"></div>
+
 
         <div>
             <form method="POST" action="Controller?action=UpdateStatus">
@@ -34,6 +36,7 @@
     </c:if>
 
     <script type="text/javascript" src="js/status.js"></script>
+    <script type="text/javascript" src="js/friends.js"></script>
 </main>
 
 <jsp:include page="footer.jspf"/>

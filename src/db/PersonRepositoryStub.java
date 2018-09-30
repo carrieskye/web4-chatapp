@@ -1,23 +1,28 @@
 package db;
 
+import domain.Person;
+import domain.Role;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import domain.Person;
-import domain.Role;
+import static java.util.Arrays.asList;
+import static java.util.Collections.singletonList;
 
 public class PersonRepositoryStub implements PersonRepository {
     private Map<String, Person> persons = new HashMap<>();
 
     public PersonRepositoryStub() {
-        Person administrator = new Person("bib@ucll.be", "t", "Bib", "Liothekaris", Role.BIB);
+        Person administrator = new Person("bib@ucll.be", "t", "Bib", "Liothekaris", Role.BIB, new ArrayList<>());
         add(administrator);
-        Person jan = new Person("jan@ucll.be", "t", "Jan", "Janssens", Role.LID);
+        Person jan = new Person("jan@ucll.be", "t", "Jan", "Janssens", Role.LID, new ArrayList<>(asList("an@ucll.be", "jonas@ucll.be")));
+        Person an = new Person("an@ucll.be", "t", "An", "Cornelissen", Role.LID, new ArrayList<>(singletonList("jan@ucll.be")));
+        Person jonas = new Person("jonas@ucll.be", "j", "Jonas", "Verschueren", Role.LID, new ArrayList<>(singletonList("jan@ucll.be")));
         add(jan);
-        Person an = new Person("an@ucll.be", "t", "An", "Cornelissen", Role.LID);
         add(an);
+        add(jonas);
     }
 
     public Person get(String personId) {
