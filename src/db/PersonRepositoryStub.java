@@ -13,8 +13,9 @@ import static java.util.Collections.singletonList;
 
 public class PersonRepositoryStub implements PersonRepository {
     private Map<String, Person> persons = new HashMap<>();
+    private static PersonRepositoryStub INSTANCE;
 
-    public PersonRepositoryStub() {
+    private PersonRepositoryStub() {
         Person administrator = new Person("bib@ucll.be", "t", "Bib", "Liothekaris", Role.BIB, new ArrayList<>());
         add(administrator);
         Person jan = new Person("jan@ucll.be", "t", "Jan", "Janssens", Role.LID, new ArrayList<>(asList("an@ucll.be", "jonas@ucll.be")));
@@ -23,6 +24,13 @@ public class PersonRepositoryStub implements PersonRepository {
         add(jan);
         add(an);
         add(jonas);
+    }
+
+    public static PersonRepositoryStub getInstance() {
+        if (INSTANCE == null) {
+            INSTANCE = new PersonRepositoryStub();
+        }
+        return INSTANCE;
     }
 
     public Person get(String personId) {

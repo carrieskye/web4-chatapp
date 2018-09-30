@@ -3,31 +3,46 @@ package controller;
 import domain.Person;
 import domain.PersonService;
 
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class AddFriend extends RequestHandler {
 
     @Override
-    public String handleRequest(HttpServletRequest request, HttpServletResponse response) {
-        String destination = "chat.jsp";
+    public void handleRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        List<String> errors = new ArrayList<>();
 
-        HttpSession session = request.getSession();
-        Person person = (Person) session.getAttribute("user");
+        Person person = getUserFromSession(request);
         String friendId = request.getParameter("friend");
-        person.addFriend(friendId);
 
         PersonService personService = super.getPersonService();
-        Person friend = personService.getPerson(friendId);
-        friend.addFriend(person.getUserId());
+        if (personService.getPerson(friendId) == null) {
+            errors.add("This person does not exist.");
+        }
 
-        personService.updatePersons(person);
-        personService.updatePersons(friend);
+        if (errors.size() == 0) {
+            try {
+                person.addFriend(friendId);
+            } catch (IllegalArgumentException e) {
+                errors.add(e.getMessage());
+            }
+            Person friend = personService.getPerson(friendId);
+            friend.addFriend(person.getUserId());
 
-        super.createSession(person, request, response);
+            personService.updatePersons(person);
+            personService.updatePersons(friend);
+        }
 
-        return destination;
+        if (errors.size() > 0) {
+            request.setAttribute("errors", errors);
+            RequestDispatcher view = request.getRequestDispatcher("chat.jsp");
+            view.forward(request, response);
+        }
     }
 
 }

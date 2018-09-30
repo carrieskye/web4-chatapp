@@ -1,20 +1,24 @@
 document.addEventListener("DOMContentLoaded", function () {
 
     let xHRObject = new XMLHttpRequest();
+    let timeOut;
 
     function update() {
-        xHRObject.open("GET", "ManageFriendsServlet", true);
+        if (timeOut) {
+            clearTimeout(timeOut);
+        }
+        xHRObject.open("GET", "Controller?action=GetFriends", true);
         xHRObject.onreadystatechange = getFriends;
         xHRObject.send(null);
     }
+
 
     function getFriends() {
         if (xHRObject.status === 200) {
             if (xHRObject.readyState === 4) {
                 let friends = JSON.parse(xHRObject.responseText);
-                console.log(friends);
                 createTable(friends);
-                setTimeout(getFriends, 2000);
+                timeOut = setTimeout(update, 2000);
             }
         }
     }
@@ -48,7 +52,7 @@ document.addEventListener("DOMContentLoaded", function () {
         friendsTable.appendChild(friendsRow);
     }
 
-    function createFriendStatus(friendsRow, friend){
+    function createFriendStatus(friendsRow, friend) {
         let statusCell = document.createElement("td");
 
         createSimpleElement("div", friend.status, statusCell, "status-text");
@@ -61,6 +65,15 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     update();
+
+    document.getElementById("add-friend-form").onsubmit = function () {
+        xHRObject.open("POST", "Controller?action=AddFriend", true);
+        xHRObject.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+        xHRObject.send("friend=" + encodeURI(document.getElementById("friend").value));
+        document.getElementById("friend").value = "";
+        update();
+        return false;
+    }
 
 });
 

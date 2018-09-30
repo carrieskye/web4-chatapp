@@ -1,9 +1,13 @@
 document.addEventListener("DOMContentLoaded", function () {
 
     let xHRObject = new XMLHttpRequest();
+    let timeOut;
 
     function update() {
-        xHRObject.open("GET", "ManageStatusServlet", true);
+        if (timeOut) {
+            clearTimeout(timeOut);
+        }
+        xHRObject.open("GET", "Controller?action=GetStatus", true);
         xHRObject.onreadystatechange = getStatus;
         xHRObject.send(null);
     }
@@ -16,7 +20,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 let statusDiv = document.getElementById("user-status");
                 createStatusMessage(statusDiv, status);
                 createStatusDot(statusDiv, status);
-                setTimeout(getStatus, 2000);
+                timeOut = setTimeout(update, 2000);
             }
         }
     }
@@ -45,6 +49,16 @@ document.addEventListener("DOMContentLoaded", function () {
         statusDotDiv.className = getDotId(status);
         statusDiv.appendChild(statusDotDiv);
     }
+
+
+    document.getElementById("update-status-form").onsubmit = function () {
+        xHRObject.open("POST", "Controller?action=UpdateStatus", true);
+        xHRObject.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+        xHRObject.send("status=" + encodeURI(document.getElementById("status").value));
+        document.getElementById("status").value = "";
+        update();
+        return false;
+    };
 
     update();
 

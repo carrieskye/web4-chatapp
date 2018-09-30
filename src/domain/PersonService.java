@@ -6,36 +6,36 @@ import db.PersonRepository;
 import db.PersonRepositoryStub;
 
 public class PersonService {
-	private PersonRepository personRepository = new PersonRepositoryStub();
+    private PersonRepository personRepository = PersonRepositoryStub.getInstance();
 
-	public PersonService(){
-	}
-	
-	public Person getPerson(String personId)  {
-		return getPersonRepository().get(personId);
-	}
+    public PersonService() {
+    }
 
-	public List<Person> getPersons() {
-		return getPersonRepository().getAll();
-	}
+    public Person getPerson(String personId) {
+        return getPersonRepository().get(personId);
+    }
 
-	public void addPerson(Person person) {
-		getPersonRepository().add(person);
-	}
+    public List<Person> getPersons() {
+        return getPersonRepository().getAll();
+    }
 
-	public void updatePersons(Person person) {
-		getPersonRepository().update(person);
-	}
+    public void addPerson(Person person) {
+        getPersonRepository().add(person);
+    }
 
-	public void deletePerson(String id) {
-		getPersonRepository().delete(id);
-	}
-	
-	public Person getAuthenticatedUser(String email, String password) {
-		return getPersonRepository().getAuthenticatedUser(email, password);
-	}
+    public void updatePersons(Person person) {
+        getPersonRepository().update(person);
+    }
 
-	private PersonRepository getPersonRepository() {
-		return personRepository;
-	}
+    public void deletePerson(String id) {
+        getPersonRepository().delete(id);
+    }
+
+    public Person getAuthenticatedUser(String email, String password) {
+        return getPersonRepository().getAuthenticatedUser(email, password);
+    }
+
+    private PersonRepository getPersonRepository() {
+        return personRepository;
+    }
 }

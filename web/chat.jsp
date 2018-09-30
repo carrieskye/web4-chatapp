@@ -23,20 +23,24 @@
         <div id="user-status"></div>
         <div id="friends"></div>
 
-
         <span>
             <h3>Update status</h3>
-            <form method="POST" action="Controller?action=UpdateStatus">
-                <input type="text" id="status" name="status" title="status" required/>
+            <form id="update-status-form" method="POST" action="Controller?action=UpdateStatus">
+                <input type="text" id="status" name="status" required/>
+                    <datalist id="status-options">
+                      <option>online</option>
+                      <option>away</option>
+                      <option>offline</option>
+                    </datalist>
                 <input type="submit" id="status-button" class="inline-submit" value="Change"/>
             </form>
         </span>
 
         <span>
             <h3>Add friend</h3>
-            <form method="POST" action="Controller?action=AddFriend">
+            <form id="add-friend-form" method="POST" action="Controller?action=AddFriend">
                 <input type="text" id="friend" name="friend" title="friend" required/>
-                <input type="submit" id="new-friend-button" class="inline-submit" value="Change"/>
+                <input type="submit" id="new-friend-button" class="inline-submit" value="Add"/>
             </form>
         </span>
     </c:if>

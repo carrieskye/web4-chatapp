@@ -1,13 +1,16 @@
 package controller;
 
+import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
 import domain.PersonService;
 import domain.Person;
 import domain.Role;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.stream.Collectors;
 
@@ -15,7 +18,7 @@ public abstract class RequestHandler {
 
     private PersonService personService;
 
-    public abstract String handleRequest(HttpServletRequest request, HttpServletResponse response);
+    public abstract void handleRequest(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException;
 
     void setModel(PersonService personService) {
         this.personService = personService;
@@ -30,15 +33,10 @@ public abstract class RequestHandler {
         return person != null && person.getRole().equals(role);
     }
 
-    protected void createSession(Person person, HttpServletRequest request, HttpServletResponse response) {
+    Person getUserFromSession(HttpServletRequest request){
         HttpSession session = request.getSession();
-        session.setAttribute("user", person);
-
-        PersonService personService = getPersonService();
-        session.setAttribute("friends", person.getFriends()
-                .stream()
-                .map(personService::getPerson)
-                .collect(Collectors.toCollection(ArrayList::new)));
+        String userId = ((Person) session.getAttribute("user")).getUserId();
+        return getPersonService().getPerson(userId);
     }
 
 }

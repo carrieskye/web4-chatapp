@@ -1,8 +1,5 @@
 package controller;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import domain.Person;
 import domain.PersonService;
 
 import javax.servlet.RequestDispatcher;
@@ -11,7 +8,6 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -46,7 +42,8 @@ public class Controller extends HttpServlet {
             RequestHandler handler;
             try {
                 handler = controllerFactory.getController(action, model);
-                destination = handler.handleRequest(request, response);
+                handler.handleRequest(request, response);
+                return;
             } catch (NotAuthorizedException exc) {
                 List<String> errors = new ArrayList<>();
                 errors.add(exc.getMessage());

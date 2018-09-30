@@ -26,7 +26,7 @@ public class Person {
         setHashedPassword(password);
         setFirstName(firstName);
         setLastName(lastName);
-        setStatus("online");
+        setStatus("offline");
         setRole(role);
         setFriends(friends);
     }
@@ -37,7 +37,7 @@ public class Person {
         setSalt(salt);
         setFirstName(firstName);
         setLastName(lastName);
-        setStatus("online");
+        setStatus("offline");
         setRole(role);
         setFriends(friends);
     }
@@ -167,7 +167,13 @@ public class Person {
         this.friends = friends;
     }
 
-    public void addFriend(String friendId) {
+    public void addFriend(String friendId) throws IllegalArgumentException{
+        if (friends.contains(friendId)){
+            throw new IllegalArgumentException("Friend already added");
+        }
+        if (friendId.equals(getUserId())){
+            throw new IllegalArgumentException("You cannot add yourself");
+        }
         friends.add(friendId);
     }
 
