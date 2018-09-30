@@ -32,7 +32,7 @@ public class LogIn extends RequestHandler {
             Person person = personService.getAuthenticatedUser(email, password);
             if (person != null) {
                 person.setStatus("online");
-                createSession(person, request, response);
+                super.createSession(person, request, response);
             } else {
                 errors.add("No valid email/password");
             }
@@ -45,15 +45,5 @@ public class LogIn extends RequestHandler {
         return destination;
     }
 
-    private void createSession(Person person, HttpServletRequest request, HttpServletResponse response) {
-        HttpSession session = request.getSession();
-        session.setAttribute("user", person);
-
-        PersonService personService = super.getPersonService();
-        session.setAttribute("friends", person.getFriends()
-                .stream()
-                .map(personService::getPerson)
-                .collect(Collectors.toCollection(ArrayList::new)));
-    }
 
 }

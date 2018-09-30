@@ -38,7 +38,7 @@
             </form>
         </c:when>
         <c:otherwise>
-            <form method="post" action="Controller?action=LogIn">
+            <form method="post" action="Controller?action=LogIn" class="login">
                 <p>
                     <label for="email">Your email </label>
                     <input type="text" id="email" name="email" value="jan@ucll.be">

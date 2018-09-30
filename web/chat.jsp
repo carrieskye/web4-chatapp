@@ -24,15 +24,21 @@
         <div id="friends"></div>
 
 
-        <div>
+        <span>
+            <h3>Update status</h3>
             <form method="POST" action="Controller?action=UpdateStatus">
-                <p>
-                    <label for="status">Change status</label>
-                    <input type="text" id="status" name="status" required/>
-                </p>
-                <input type="submit" id="status-button" value="Change"/>
+                <input type="text" id="status" name="status" title="status" required/>
+                <input type="submit" id="status-button" class="inline-submit" value="Change"/>
             </form>
-        </div>
+        </span>
+
+        <span>
+            <h3>Add friend</h3>
+            <form method="POST" action="Controller?action=AddFriend">
+                <input type="text" id="friend" name="friend" title="friend" required/>
+                <input type="submit" id="new-friend-button" class="inline-submit" value="Change"/>
+            </form>
+        </span>
     </c:if>
 
     <script type="text/javascript" src="js/status.js"></script>

@@ -12,7 +12,6 @@ document.addEventListener("DOMContentLoaded", function () {
         if (xHRObject.status === 200) {
             if (xHRObject.readyState === 4) {
                 let serverResponse = JSON.parse(xHRObject.responseText);
-                console.log(serverResponse);
                 let status = serverResponse.status;
                 let statusDiv = document.getElementById("user-status");
                 createStatusMessage(statusDiv, status);
