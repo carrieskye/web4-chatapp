@@ -199,10 +199,10 @@ nav ul li#current {
 }
 
 /*Status*/
-.status-online,
-.status-offline,
-.status-away,
-.status-modified {
+#status-online,
+#status-offline,
+#status-away,
+#status-modified {
     height: 0.5rem;
     border-radius: 50%;
     -moz-border-radius: 50%;
@@ -213,29 +213,29 @@ nav ul li#current {
     margin-top: 0.2rem;
 }
 
-.status-online {
+#status-online {
     background: greenyellow;
     border: 2px solid #76a921;
 }
 
-.status-offline {
+#status-offline {
     background: #f43032;
     border: 2px solid #9c1e1f;
 }
 
-.status-away {
+#status-away {
     background: #ff9922;
     border: 2px solid #ac6914;
 
 }
 
-.status-modified {
+#status-modified {
     background: lightskyblue;
     border: 2px solid #6796b4;
 
 }
 
-.status-message {
+#statusText {
     display: inline;
     float: right;
 }

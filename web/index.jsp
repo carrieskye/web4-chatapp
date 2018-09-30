@@ -15,6 +15,7 @@
 <body>
 <jsp:include page="header.jsp">
     <jsp:param name="title" value="Home"/>
+    <jsp:param name="user" value="${user}"/>
 </jsp:include>
 
 <main>
@@ -28,7 +29,7 @@
         </div>
     </c:if>
     <c:choose>
-        <c:when test="${user!=null}">
+        <c:when test="${not empty user}">
             <p>Welcome ${user.getFirstName()}!</p>
             <form method="post" action="Controller?action=LogOut">
                 <p>

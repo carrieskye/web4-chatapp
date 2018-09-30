@@ -10,6 +10,7 @@ public class LogOut extends RequestHandler {
     public String handleRequest(HttpServletRequest request, HttpServletResponse response) {
         HttpSession session = request.getSession();
         session.invalidate();
+        request.setAttribute("user", null);
         return "index.jsp";
     }
 
