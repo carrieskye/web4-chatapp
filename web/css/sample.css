@@ -3,9 +3,11 @@
 body {
     background-color: #f1f1f1;
     color: #414141;
-    font-size: 1rem;
+    font-size: 1.5rem;
     font-family: MontSerrat, sans-serif;
     text-align: left;
+    padding-left: 15%;
+    padding-right: 15%;
 }
 
 /*Header*/
@@ -17,33 +19,30 @@ header {
     width: 100%;
     padding-left: 15%;
     padding-right: 15%;
-    text-align: left;
+    padding-top: 0.5rem;
 }
 
 .chat-header {
     vertical-align: bottom;
-    float: left;
-    width: 70%;
-    text-align: right;
     color: white;
     margin: 0;
+    font-size: 2rem;
 }
 
-.title {
-    width: 70%;
-    padding-left: 15%;
-    margin-top: 5rem;
+.title h2 {
+    margin-top: 8rem;
+    margin-bottom: 2rem;
+    font-size: 2rem;
+    font-weight: bold;
 }
 
-i {
+nav i {
     margin-left: 0.5rem;
     margin-right: 2rem;
 }
 
 /*Main*/
 main {
-    width: 70%;
-    /*max-width: 800px;*/
     display: block;
     margin-bottom: 10rem;
     margin-left: auto;
@@ -84,16 +83,17 @@ table {
 th {
     padding: 10px 40px 10px 5px;
     border-bottom: 1px solid #666;
-    background-color: #eee;
 }
 
 td {
     padding: 10px 40px 10px 5px;
+    justify-content: center;
 }
 
 /*Input*/
 h3 {
     margin-top: 4rem;
+    font-size: 1.5rem;
 }
 
 .number {
@@ -101,53 +101,49 @@ h3 {
     padding-right: 10px;
 }
 
-p > label {
-    float: left;
-    width: auto;
-    text-align: right;
-    padding-right: 3%;
-    margin-top: 10px;
-    color: #666;
-}
-
-.login p > label {
-    width: 25%;
-}
-
 input[type="text"], input[type="email"], input[type="password"], input[type="number"] {
-    border: 1px solid #aaa;
+    border: 0.1rem solid #aaa;
     color: #666;
-    height: 30px;
-    margin-right: 6px;
-    margin-top: 2px;
-    outline: 0 none;
-    padding: 3px 3px 3px 5px;
-    width: 30%;
-    font-size: 12px;
-    line-height: 15px;
-    border-radius: 3px;
-    box-shadow: inset 0 1px 4px #ECECEC;
-    -moz-box-shadow: inset 0 1px 4px #ECECEC;
-    -webkit-box-shadow: inset 0 1px 4px #ECECEC;
+    min-width: 10rem;
+    height: auto;
+    width: auto;
+    border-radius: 1rem;
+}
+
+textarea, .newCommentText {
+    border: 0.1rem solid #aaa;
+    color: #666;
+    min-width: 10rem;
+    height: 10rem;
+    width: 100%;
+    border-radius: 1rem;
 }
 
 input[type="submit"], button {
-    border: 1px solid #aaa;
+    border: 0.1rem solid #aaa;
     color: #666;
-    height: 30px;
-    margin-right: 6px;
-    margin-top: 2px;
-    margin-left: 0;
-    padding: 3px 3px 3px 5px;
-    font-size: 16px;
-    border-radius: 3px;
-    box-shadow: inset 0 1px 4px #ECECEC;
-    -moz-box-shadow: inset 0 1px 4px #ECECEC;
-    -webkit-box-shadow: inset 0 1px 4px #ECECEC;
+    height: auto;
+    width: auto;
+    border-radius: 1rem;
 }
 
-.login input[type="submit"] {
-    margin-left: 28%;
+label {
+    font-size: 1.5rem;
+    font-weight: normal;
+}
+
+.row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.card {
+    background: #e2e2e2;
+    border: 0.1rem solid #999;
+    border-radius: 1rem;
+    padding: 2rem;
+    margin: 2rem;
 }
 
 fieldset {
@@ -173,41 +169,24 @@ p > label.has-error {
 }
 
 /*Nav bar*/
-ul {
+.banner nav ul {
     list-style-type: none;
-    margin-left: 0;
-    padding: 0;
 }
 
-nav ul {
-    list-style-type: none;
-    margin-left: 0;
-}
-
-nav ul li {
+.banner nav ul li {
     display: inline-block;
     margin-left: 2rem;
-    margin-top: 0.5rem;
 }
 
-nav ul li:first-child {
-    float: left;
-    font-size: 1.8rem;
-    margin-left: 0;
-    margin-top: 0;
-}
-
-nav ul li a {
+.banner nav ul li a {
     text-decoration: none;
     color: white;
+    font-size: 1.6rem;
 }
 
-nav ul li a#actual {
-    border-bottom: 1px solid white;
-}
-
-nav ul li#current {
-    border-bottom: 1px solid white;
+.banner nav ul li a:hover {
+    text-decoration: none;
+    color: #cfcfcf;
 }
 
 /*Status*/
@@ -215,11 +194,11 @@ nav ul li#current {
 .status-offline,
 .status-away,
 .status-modified {
-    height: 0.5rem;
+    height: 1rem;
     border-radius: 50%;
     -moz-border-radius: 50%;
     -webkit-border-radius: 50%;
-    width: 0.5rem;
+    width: 1rem;
     float: right;
     margin-right: 0.5rem;
     margin-top: 0.2rem;
@@ -250,4 +229,97 @@ nav ul li#current {
 .status-text {
     display: inline;
     float: right;
+}
+
+#allMessages {
+    color: red;
+}
+
+.lessVisible {
+    opacity: 0.4;
+}
+
+.newCommentStar {
+    opacity: 1;
+}
+
+.newCommentStar:hover {
+    opacity: 0.7;
+}
+
+.newCommentStarLessVisible {
+    opacity: 0.4;
+}
+
+.newCommentStarLessVisible:hover {
+    opacity: 0.7;
+}
+
+.card ul {
+    list-style: none;
+}
+
+.card ul li {
+    margin: 1rem;
+}
+
+.card ul li i {
+    margin-left: 0.5rem;
+}
+
+.blogText {
+    font-weight: bold;
+}
+
+.comment, .newComment {
+    margin: 2rem;
+    font-size: 1.3rem;
+    color: #535353;
+}
+
+.newComment {
+    margin-top: 4rem;
+}
+
+.commentName {
+    margin-right: 1.3rem;
+    color: #6e6e6e;
+    font-weight: bold;
+}
+
+.commentRatingInput {
+    display: none;
+}
+
+.commentText {
+    text-align: justify;
+    padding-left: 1.3rem;
+    font-size: 1.2rem;
+}
+
+.card .fa-angle-double-right {
+    width: 1.3rem;
+    color: #6e6e6e;
+}
+
+.toggleReply {
+    font-size: 1.2rem;
+    margin-left: 0.5rem;
+    padding-bottom: 0.3rem;
+}
+
+.card .form {
+    margin-top: 2rem;
+}
+
+.card label, .card .form-control {
+    font-size: 1.3rem;
+}
+
+.card button {
+    border: 0.1rem solid #aaa;
+    color: #666;
+    height: auto;
+    width: auto;
+    border-radius: 1rem;
 }
