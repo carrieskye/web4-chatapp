@@ -22,7 +22,6 @@
 
 <main>
     <div id="blogs"></div>
-    <input id="testjee" class="form-control" type="number" hidden>
     <script type="text/javascript" src="js/blog.js"></script>
 </main>
 

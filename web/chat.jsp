@@ -25,38 +25,30 @@
         <div id="user-status"></div>
         <div id="friends"></div>
 
-        <span>
-            <h3>Update status</h3>
+        <div class="clearfix">
+            <label for="status" class="chatLabel">Update status</label>
             <form id="update-status-form" method="POST" action="Controller?action=UpdateStatus">
-                <div class="form-group row">
-                     <div class="col-md-3">
-                         <input type="text" id="status" name="status" class="form-control" required/>
-                            <datalist id="status-options">
-                                <option>online</option>
-                                <option>away</option>
-                                <option>offline</option>
-                    </datalist>
-                    </div>
-                    <div class="col-md-9">
-                        <input type="submit" id="status-button" class="form-control" value="Change"/>
-                    </div>
+                <input type="text" id="status" name="status" class="form-control col-xs-3" required/>
+                <datalist id="status-options">
+                    <option>online</option>
+                    <option>away</option>
+                    <option>offline</option>
+                </datalist>
+                <div class="col-xs-3">
+                    <input type="submit" id="status-button" class="form-control" value="Change"/>
                 </div>
             </form>
-        </span>
+        </div>
 
-        <span>
-            <h3>Add friend</h3>
+        <div>
+            <label for="friend" class="chatLabel">Add friend</label>
             <form id="add-friend-form" method="POST" action="Controller?action=AddFriend">
-                <div class="form-group row">
-                     <div class="col-md-3">
-                         <input type="text" id="friend" name="friend" title="friend" class="form-control" required/>
-                     </div>
-                     <div class="col-md-9">
-                         <input type="submit" id="new-friend-button" class="form-control" value="Add"/>
-                     </div>
+                <input type="text" id="friend" name="friend" title="friend" class="form-control col-xs-3" required/>
+                <div class="col-xs-3">
+                    <input type="submit" id="new-friend-button" class="form-control" value="Add"/>
                 </div>
             </form>
-        </span>
+        </div>
     </c:if>
 
     <script type="text/javascript" src="js/status.js"></script>

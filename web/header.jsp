@@ -10,10 +10,10 @@
 <header role="banner" class="banner">
     <nav class="chat-header">
         <div class="row">
-            <div class="col-md-6 text-left">
+            <div class="col-xs-6 text-left">
                 <i class="fa fa-comment"></i>Carolyne's Chat App
             </div>
-            <div class="col-md-6 text-right">
+            <div class="col-xs-6 text-right">
                 <ul>
                     <li><a href="Controller">Home</a></li>
                     <c:if test="${not empty param.user}">

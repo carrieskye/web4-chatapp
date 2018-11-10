@@ -24,7 +24,7 @@ async function send(blogId) {
     const data = {
         blogId: blogId,
         name: document.getElementById(`name${blogId}`).value,
-        text: document.getElementById(`comment${blogId}`).value,
+        text: document.getElementById(`content${blogId}`).value,
         rating: document.getElementById(`rating${blogId}`).value
     };
     if (data.rating >= 0 && data.rating <= 10) {
@@ -85,27 +85,27 @@ function writeNewCommentForm(blogId) {
 
     createFormGroup('input', 'Name: ', 'name', 'text', blogId);
     const ratingFormGroup = createFormGroup('input', 'Rating: ', 'rating', 'number', blogId);
-    document.getElementById(`rating${blogId}`).className = 'commentRatingInput';
+    document.getElementById(`rating${blogId}`).className = 'newCommentRating';
     document.getElementById(`rating${blogId}`).value = 0;
     const ratingDiv = createElement(ratingFormGroup, 'div');
     for (let i = 0; i < 10; i++) {
-        const star = createElement(ratingDiv, 'i', `ratingStar${blogId}-${i}`, 'fa fa-star newCommentStarLessVisible');
+        const star = createElement(ratingDiv, 'i', `star${blogId}-${i}`, 'fa fa-star newCommentStarLessVisible');
         star.onclick = ((event) => {
             let starNumber = event.target.id.split('-')[1];
             document.getElementById(`rating${blogId}`).value = (parseInt(starNumber) + 1);
             for (let j = 0; j < 10; j++) {
                 if (j <= starNumber) {
-                    document.getElementById(`ratingStar${blogId}-${j}`).className = 'fa fa-star newCommentStar';
+                    document.getElementById(`star${blogId}-${j}`).className = 'fa fa-star newCommentStar';
                 } else {
-                    document.getElementById(`ratingStar${blogId}-${j}`).className = 'fa fa-star newCommentStarLessVisible';
+                    document.getElementById(`star${blogId}-${j}`).className = 'fa fa-star newCommentStarLessVisible';
                 }
             }
         });
     }
 
-    createFormGroup('textarea', 'Comment: ', 'comment', undefined, blogId);
-    document.getElementById(`comment${blogId}`).rows = 5;
-    document.getElementById(`comment${blogId}`).className = 'newCommentText form-control';
+    createFormGroup('textarea', 'Comment: ', 'content', undefined, blogId);
+    document.getElementById(`content${blogId}`).rows = 5;
+    document.getElementById(`content${blogId}`).className = 'newCommentText form-control';
 
     const addComment = createElement(form, 'button', undefined, 'form-control', 'Add comment');
     addComment.onclick = () => {
@@ -124,10 +124,10 @@ function cleanForm(blogId) {
     document.getElementById(`form${blogId}`).hidden = true;
     document.getElementById(`toggleReplyIcon${blogId}`).className = 'fa fa-chevron-down toggleReply';
     document.getElementById(`name${blogId}`).value = '';
-    document.getElementById(`comment${blogId}`).value = '';
+    document.getElementById(`content${blogId}`).value = '';
     document.getElementById(`rating${blogId}`).value = '';
     for (let i = 0; i < 10; i++) {
-        document.getElementById(`ratingStar${blogId}-${i}`).className = 'fa fa-star newCommentStarLessVisible';
+        document.getElementById(`star${blogId}-${i}`).className = 'fa fa-star newCommentStarLessVisible';
     }
 }
 
