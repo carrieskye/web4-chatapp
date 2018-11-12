@@ -49,7 +49,7 @@
                     </form>
                 </div>
             </div>
-            <div class="col-xs-9 chat col-xs-offset-1">
+            <div id="chatCol" class="col-xs-9 chat col-xs-offset-1">
 
                 <div class="chatTitle">
                     <h2>

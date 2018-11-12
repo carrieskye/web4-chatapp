@@ -176,6 +176,10 @@ fieldset {
     background-color: #f2dede;
     border-color: #eed3d7;
     color: #b94a48;
+    border-radius: 1rem;
+    padding-top: 0.8rem;
+    padding-bottom: 0.1rem;
+    margin-bottom: 1rem;
 }
 
 p > label.has-error {
@@ -439,6 +443,40 @@ p > label.has-error {
     border-radius: 1rem;
 }
 
+/*Register*/
+.login input,
+.register input[type="text"], .register input[type="password"] {
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.register input[type="radio"] {
+    display: inline-block;
+}
+
+.register input[type="email"] {
+    min-width: 60%;
+}
+
+.login label,
+.register label {
+    display: inline-block;
+    float: left;
+    padding-top: 0.75rem;
+    text-align: left;
+    vertical-align: middle;
+    width: 12rem;
+    margin-right: 1rem;
+}
+
+.leftCol {
+    float: left;
+}
+
+.register input[type="submit"] {
+    margin-left: 0;
+}
+
 /* 100% Image Width on Smaller Screens */
 @media only screen and (max-width: 700px) {
 
@@ -458,5 +496,27 @@ p > label.has-error {
         font-size: 1.2rem;
     }
 
+    .row {
+        display: inline-block;
+    }
+
+    .col-xs-6 {
+        display: inline-block;
+        float: left;
+    }
+
+    .register input[type="email"] {
+        min-width: 0;
+    }
+
+    .leftCol {
+        float: none;
+        margin-right: 0;
+        width: auto;
+    }
+
+    .rightCol {
+        width: auto;
+    }
 }
 

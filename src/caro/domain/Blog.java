@@ -9,9 +9,9 @@ public class Blog {
     private ArrayList<Comment> comments;
 
     public Blog(String blogId, String text, ArrayList<Comment> comments) {
-        this.blogId = blogId;
-        this.text = text;
-        this.comments = comments;
+        setBlogId(blogId);
+        setText(text);
+        setComments(comments);
     }
 
     public String getBlogId() {

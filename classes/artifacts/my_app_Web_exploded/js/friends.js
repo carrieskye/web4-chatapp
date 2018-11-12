@@ -31,9 +31,8 @@ document.addEventListener('DOMContentLoaded', function () {
             friendsDiv.removeChild(friendsList);
         }
 
-        friendsList = document.createElement('div');
+        friendsList = createElement(friendsDiv, 'div');
         friends.forEach(friend => createFriend(friendsList, friend));
-        friendsDiv.appendChild(friendsList);
     }
 
     function createFriend(friendsList, friend) {
@@ -42,8 +41,8 @@ document.addEventListener('DOMContentLoaded', function () {
         friendRow.addEventListener('click', () => {
             openChat(friend);
         });
-        createElement(friendRow, 'i', friend.userId , 'fa fa-circle ' + getDotId(friend.status));
-        createElement(friendRow, 'span', friend.userId, 'status-name' , friend.firstName);
+        createElement(friendRow, 'i', friend.userId, 'fa fa-circle ' + getDotId(friend.status));
+        createElement(friendRow, 'span', friend.userId, 'status-name', friend.firstName);
         createElement(friendRow, 'span', friend.userId, 'status-text', ` (${friend.status})`);
     }
 

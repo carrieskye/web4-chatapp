@@ -16,10 +16,15 @@
             <div class="col-xs-6 text-right">
                 <ul>
                     <li><a href="Controller">Home</a></li>
-                    <c:if test="${not empty param.user}">
-                        <li><a href="Controller?action=Open&page=Chat">Chat</a></li>
-                    </c:if>
                     <li><a href="Controller?action=Open&page=Blog">Blog</a></li>
+                    <c:choose>
+                        <c:when test="${not empty param.user}">
+                            <li><a href="Controller?action=Open&page=Chat">Chat</a></li>
+                        </c:when>
+                        <c:otherwise>
+                            <li><a href="Controller?action=Open&page=Register">Register</a></li>
+                        </c:otherwise>
+                    </c:choose>
                 </ul>
             </div>
         </div>

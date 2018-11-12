@@ -8,32 +8,48 @@ public class Comment {
     private String text;
 
     public Comment(String name, int rating, String text) {
-        this.name = name;
-        this.rating = rating;
-        this.text = text;
+        setName(name);
+        setRating(rating);
+        setText(text);
     }
 
     public Comment(String blogId, String name, int rating, String text) {
-        this.blogId = blogId;
-        this.name = name;
-        this.rating = rating;
-        this.text = text;
+        setBlogId(blogId);
+        setName(name);
+        setRating(rating);
+        setText(text);
     }
 
     public String getBlogId() {
         return blogId;
     }
 
+    private void setBlogId(String blogId) {
+        this.blogId = blogId;
+    }
+
     public String getName() {
         return name;
+    }
+
+    private void setName(String name) {
+        this.name = name;
     }
 
     public int getRating() {
         return rating;
     }
 
+    public void setRating(int rating) {
+        this.rating = rating;
+    }
+
     public String getText() {
         return text;
+    }
+
+    public void setText(String text) {
+        this.text = text;
     }
 
 }

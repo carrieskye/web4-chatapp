@@ -40,21 +40,13 @@
         </c:when>
         <c:otherwise>
             <form method="post" action="Controller?action=LogIn" class="login">
-                <div class="form-group row">
-                    <div class="col-xs-2">
-                        <label for="email">Your email </label>
-                    </div>
-                    <div class="col-xs-10">
-                        <input type="text" id="email" name="email" value="jan@ucll.be" class="form-control">
-                    </div>
+                <div class="form-group">
+                    <label for="email">Your email</label>
+                    <input type="text" id="email" name="email" value="jan@ucll.be" class="form-control">
                 </div>
-                <div class="form-group row">
-                    <div class="col-xs-2">
-                        <label for="password">Your password</label>
-                    </div>
-                    <div class="col-xs-10">
-                        <input type="password" id="password" name="password" value="t" class="form-control">
-                    </div>
+                <div class="form-group">
+                    <label for="password">Your password</label>
+                    <input type="password" id="password" name="password" value="t" class="form-control">
                 </div>
                 <input type="submit" id="loginbutton" value="Log in" class="form-control">
             </form>

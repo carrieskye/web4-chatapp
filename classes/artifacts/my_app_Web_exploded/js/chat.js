@@ -9,12 +9,16 @@ window.timeOut = false;
 $(async function () {
     window.user = await getStatus();
     window.friends = await getFriends();
-    window.currentChat = window.friends[0];
-    $("#newMessage").val('');
-    $('#chatTitleName').text(`Chat with ${window.currentChat.firstName}`);
-    $('#chatTitleDot').addClass(`${getDotId(window.currentChat.status)}`);
-    getMessages();
-    $("#chatBody").show();
+    if (window.friends.length > 0) {
+        window.currentChat = window.friends[0];
+        $('#newMessage').val('');
+        $('#chatTitleName').text(`Chat with ${window.currentChat.firstName}`);
+        $('#chatTitleDot').addClass(`${getDotId(window.currentChat.status)}`);
+        getMessages();
+    } else {
+        $('#chatCol').hide();
+    }
+    $('#chatBody').show();
 });
 
 const getStatus = () => new Promise((resolve, reject) => {

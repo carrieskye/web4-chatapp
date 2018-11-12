@@ -10,11 +10,11 @@ public class Message {
     private long timeStamp;
 
     public Message(String messageId, String senderId, String receiverId, String message, long timeStamp) {
-        this.messageId = messageId;
-        this.senderId = senderId;
-        this.receiverId = receiverId;
-        this.message = message;
-        this.timeStamp = timeStamp;
+        setMessageId(messageId);
+        setSenderId(senderId);
+        setReceiverId(receiverId);
+        setMessage(message);
+        setTimeStamp(timeStamp);
     }
 
     public String getMessageId() {

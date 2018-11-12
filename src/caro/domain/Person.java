@@ -16,26 +16,29 @@ public class Person {
     private String salt;
     private String firstName;
     private String lastName;
+    private String gender;
     private String status;
     private Role role;
     private ArrayList<String> friends;
 
-    public Person(String userId, String password, String firstName, String lastName, Role role, ArrayList<String> friends) {
+    public Person(String userId, String password, String firstName, String lastName, String gender, Role role, ArrayList<String> friends) {
         setUserId(userId);
         setHashedPassword(password);
         setFirstName(firstName);
         setLastName(lastName);
+        setGender(gender);
         setStatus("offline");
         setRole(role);
         setFriends(friends);
     }
 
-    public Person(String userId, String password, String salt, String firstName, String lastName, Role role, ArrayList<String> friends) {
+    public Person(String userId, String password, String salt, String firstName, String lastName, String gender, Role role, ArrayList<String> friends) {
         setUserId(userId);
         setPassword(password);
         setSalt(salt);
         setFirstName(firstName);
         setLastName(lastName);
+        setGender(gender);
         setStatus("offline");
         setRole(role);
         setFriends(friends);
@@ -149,6 +152,14 @@ public class Person {
             throw new IllegalArgumentException("No last name given");
         }
         this.lastName = lastName;
+    }
+
+    public String getGender() {
+        return gender;
+    }
+
+    public void setGender(String gender) {
+        this.gender = gender;
     }
 
     public String getStatus() {
