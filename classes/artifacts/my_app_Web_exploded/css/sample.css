@@ -182,6 +182,15 @@ fieldset {
     margin-bottom: 1rem;
 }
 
+.danger ul {
+    list-style: none;
+    padding-left: 1rem;
+}
+
+.danger ul li {
+    width: auto;
+}
+
 p > label.has-error {
     color: #a80f0c;
 }
