@@ -42,6 +42,10 @@
                     <input type="text" id="lastName" name="lastName" class="form-control" required>
                 </div>
                 <div class="form-group">
+                    <label for="age">Age</label>
+                    <input type="number" id="age" name="age" class="form-control" min="0" max="150" required>
+                </div>
+                <div class="form-group">
                     <label for="gender">Gender</label>
                     <input type="radio" id="gender" name="gender" value="male"> Male<br>
                     <input type="radio" name="gender" value="female"> Female<br>

@@ -17,11 +17,11 @@ public class PersonRepositoryStub implements PersonRepository {
     private static PersonRepositoryStub INSTANCE;
 
     private PersonRepositoryStub() {
-        Person administrator = new Person("bib@ucll.be", "t", "Bib", "Liothekaris", "M", Role.BIB, new ArrayList<>());
+        Person administrator = new Person("bib@ucll.be", "t", "Bib", "Liothekaris", "M", 35, Role.BIB, new ArrayList<>());
         add(administrator);
-        Person jan = new Person("jan@ucll.be", "t", "Jan", "Janssens", "M", Role.LID, new ArrayList<>(asList("an@ucll.be", "jonas@ucll.be")));
-        Person an = new Person("an@ucll.be", "t", "An", "Cornelissen", "F", Role.LID, new ArrayList<>(singletonList("jan@ucll.be")));
-        Person jonas = new Person("jonas@ucll.be", "j", "Jonas", "Verschueren", "M", Role.LID, new ArrayList<>(singletonList("jan@ucll.be")));
+        Person jan = new Person("jan@ucll.be", "t", "Jan", "Janssens", "M", 45, Role.LID, new ArrayList<>(asList("an@ucll.be", "jonas@ucll.be")));
+        Person an = new Person("an@ucll.be", "t", "An", "Cornelissen", "F", 42, Role.LID, new ArrayList<>(singletonList("jan@ucll.be")));
+        Person jonas = new Person("jonas@ucll.be", "j", "Jonas", "Verschueren", "M", 23, Role.LID, new ArrayList<>(singletonList("jan@ucll.be")));
         add(jan);
         add(an);
         add(jonas);

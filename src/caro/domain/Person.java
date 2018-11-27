@@ -18,21 +18,23 @@ public class Person {
     private String lastName;
     private String gender;
     private String status;
+    private int age;
     private Role role;
     private ArrayList<String> friends;
 
-    public Person(String userId, String password, String firstName, String lastName, String gender, Role role, ArrayList<String> friends) {
+    public Person(String userId, String password, String firstName, String lastName, String gender, int age, Role role, ArrayList<String> friends) {
         setUserId(userId);
         setHashedPassword(password);
         setFirstName(firstName);
         setLastName(lastName);
         setGender(gender);
         setStatus("offline");
+        setAge(age);
         setRole(role);
         setFriends(friends);
     }
 
-    public Person(String userId, String password, String salt, String firstName, String lastName, String gender, Role role, ArrayList<String> friends) {
+    public Person(String userId, String password, String salt, String firstName, String lastName, String gender, int age, Role role, ArrayList<String> friends) {
         setUserId(userId);
         setPassword(password);
         setSalt(salt);
@@ -40,6 +42,7 @@ public class Person {
         setLastName(lastName);
         setGender(gender);
         setStatus("offline");
+        setAge(age);
         setRole(role);
         setFriends(friends);
     }
@@ -171,6 +174,14 @@ public class Person {
             throw new IllegalArgumentException("No status given");
         }
         this.status = status;
+    }
+
+    public int getAge() {
+        return age;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
     }
 
     public void setFriends(ArrayList<String> friends) {

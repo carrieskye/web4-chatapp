@@ -23,10 +23,11 @@ public class Register extends RequestHandler {
         try {
             String firstName = request.getParameter("firstName");
             String lastName = request.getParameter("lastName");
+            int age = Integer.parseInt(request.getParameter("age"));
             String gender = request.getParameter("gender");
             String email = request.getParameter("email");
             String password = request.getParameter("password");
-            Person person = new Person(email, password, firstName, lastName, gender, LID, new ArrayList<>());
+            Person person = new Person(email, password, firstName, lastName, gender, age, LID, new ArrayList<>());
             getPersonService().addPerson(person);
 
             RequestDispatcher view = request.getRequestDispatcher("Controller?action=LogIn");

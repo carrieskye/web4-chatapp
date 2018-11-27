@@ -124,11 +124,14 @@ h3 {
 input[type="text"], input[type="email"], input[type="password"], input[type="number"] {
     border: 0.1rem solid #aaa;
     color: #666;
-    min-width: 10rem;
     height: auto;
     width: auto;
     border-radius: 1rem;
     font-size: 1.3rem;
+}
+
+input[type="text"], input[type="email"], input[type="password"] {
+    min-width: 10rem;
 }
 
 textarea, .newCommentText, .newMessageText {
@@ -465,6 +468,10 @@ p > label.has-error {
 
 .register input[type="email"] {
     min-width: 60%;
+}
+
+.register input[type="number"] {
+    width: 6.5rem;
 }
 
 .login label,
